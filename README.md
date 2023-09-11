@@ -40,3 +40,5 @@ The TCP protocol is connection-oriented, the client and server must first establ
   - Run NIC's command at Server's terminal
   - TCPPingerConcurrentServer.py
   - TCPPingerModifiedClient.py
+<br>
+Author: Bhargav Patel
