@@ -24,7 +24,7 @@ while True:
   
    # Creating Artificial Packet loss
    if rand < 4:
-     continue
+      continue
 
    # Otherwise, the server responds
    serverSocket.sendto(message, address)
