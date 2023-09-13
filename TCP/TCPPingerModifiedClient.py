@@ -4,30 +4,24 @@ import socket
 import time
 import sys
 
-
 # Create a TCP socket
 # AF_INET for Address Family - IPv4 Network, SOCK_STREAM for TCP packets
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-
 # As the server is listening the client request's for connection
 clientSocket.connect(("127.0.0.1", 9003))
-
 
 # Client will wait for 1sec if no response comes form server
 clientSocket.settimeout(1)
 
-
 # Getting input from user to send N packets
 N = int(input("Enter no. of Packets: "))
-
 
 # Some variables for calculation of RTT and it's Statistics
 pktRetrans = 0
 minRTT = sys.maxsize
 maxRTT = sys.maxsize*(-1)
 avgRTT = 0
-
 
 for i in range(N):
    msg = f"ping {i+1}"
@@ -49,12 +43,10 @@ for i in range(N):
            # Summing all the RTT for avgerage at the end
            avgRTT += diff
 
-
            # Decoding and printing the response and it's RTT
            response = response.decode()
            print(f"{response}  {stime} -- {etime}  {round(diff, 6)}")
            break
-
 
        except socket.error as e:
            # Printing the Time out error and incrementing the packet retransmited variable
@@ -65,13 +57,10 @@ for i in range(N):
            # Still the while loop is running for the same packet then finally we get response
            stime = time.time()
 
-
 clientSocket.close()
-
 
 TotalpktTrans = pktRetrans + N
 pktloss = pktRetrans / TotalpktTrans
-
 
 # Printing the RTT and it's Statistics
 print(f"\nPacket Retransmited: {(pktRetrans)}")
