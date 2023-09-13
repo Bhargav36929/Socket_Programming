@@ -3,13 +3,11 @@
 import random
 import socket
 
-
 # Create a UDP socket
 # AF_INET for Address Family - IPv4 Network, SOCK_DGRAM for UDP packets
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Assign IP address and port number to socket
 serverSocket.bind(('127.0.0.1', 7000))
-
 
 while True:
    # Generate a random number between 0 to 11 (both included)
@@ -21,7 +19,6 @@ while True:
    if not message:
       break
 
-
    # Capitalize the message from the client
    message = message.upper()
   
@@ -29,9 +26,7 @@ while True:
    if rand < 4:
      continue
 
-
    # Otherwise, the server responds
    serverSocket.sendto(message, address)
-
 
 serverSocket.close()
